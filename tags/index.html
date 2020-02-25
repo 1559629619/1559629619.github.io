@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="是大肥鹅鸭">
-    <meta name="description" content="是大肥鹅鸭">
+    <meta name="keywords" content="标签, 是大肥鹅鸭">
+    <meta name="description" content="标签 | 是大肥鹅鸭">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>是大肥鹅鸭</title>
+    <title>标签 | 是大肥鹅鸭</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -300,56 +300,9 @@
 
 </header>
 
-    
-<style>
-    .carousel-control {
-        width: 45px;
-        height: 45px;
-        line-height: 55px;
-        border-radius: 45px;
-        background: transparent;
-        cursor: pointer;
-        z-index: 100;
-    }
-
-    #prev-cover {
-        position: absolute;
-        top: 48%;
-        left: 8px;
-    }
-
-    #next-cover {
-        position: absolute;
-        top: 48%;
-        right: 8px;;
-    }
-
-    #prev-cover i {
-        margin-right: 3px;
-    }
-
-    #next-cover i {
-        margin-left: 3px;
-    }
-
-    .carousel-control:hover {
-        background-color:rgba(0, 0, 0, .4);
-    }
-
-    .carousel-control i {
-        color: #fff;
-        font-size: 2.4rem;
-    }
-</style>
-
-
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
         <div class="brand">
             <div class="title center-align">
@@ -385,291 +338,61 @@
 </script>
 
 
-
-            <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>开始阅读
-                </a>
-
-                
-                    <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light btn" target="_blank">
-                        <i class="fab fa-github-alt"></i>Github
-                    </a>
-                
-            </div>
-            <div class="cover-social-link">
-    <a href="https://github.com/1559629619" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:1559629619@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1559629619" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1559629619" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-    <a href="https://weibo.com/5626204544/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo&amp;is_all=1" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://weibo.com/5626204544/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo&amp;is_all=1" data-position="top" data-delay="50">
-        <i class="fab fa-weibo"></i>
-    </a>
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-        </div>
     </div>
-
-    
 </div>
-
-<script>
-    // TODO 此处的轮播尚需优化，PC/Mobile 在触摸切换时都感觉相当不灵活
-    $(function () {
-        let coverSlider = $('.carousel');
-
-        //用户触摸轮播自动 restartPlay 是否生效
-        let initUserPressedOrDraggedActive = false
-
-        //用户触摸轮播自动 restartPlay
-        function initUserPressedOrDragged(instance) {
-            setInterval(() => {
-                if (instance.pressed || instance.dragged) {
-                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
-                    restartPlay()
-                }
-            }, 1000)
-        }
-
-        coverSlider.carousel({
-            duration: Number('120# 切换延迟时间. Switching delay time.'),
-            fullWidth: true,
-            indicators: 'true' === 'true',
-            onCycleTo() {
-                if (!initUserPressedOrDraggedActive) {
-                    // console.log('initUserPressedOrDraggedActive')
-                    initUserPressedOrDragged(this)
-                    initUserPressedOrDraggedActive = true
-                }
-            },
-        })
-
-        let carouselIntervalId;
-        
-        // Loop to call the next cover article picture.
-        let autoCarousel = function() {
-            carouselIntervalId = setInterval(function () {
-                coverSlider.carousel('next');
-            }, 5000);
-        };
-        autoCarousel();
-        
-
-        function restartPlay() {
-            
-            clearInterval(carouselIntervalId);
-            autoCarousel();
-            
-        };
-
-        
-        // prev and next cover post.
-        $('#prev-cover').click(function () {
-            coverSlider.carousel('prev');
-            restartPlay();
-        });
-        $('#next-cover').click(function () {
-            coverSlider.carousel('next');
-            restartPlay();
-        });
-        
-    });
-</script>
-
-
 
 <main class="content">
 
     
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
-                        <div class="dream">
-    
-    <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            林深时见鹿，海蓝时见鲸，梦醒时见你。<br>可实际:林深时雾起，海蓝时浪涌，梦醒时夜续。不见鹿，不见鲸，也不见你。<br>但终究:鹿踏雾而来，鲸随浪而涌。你没回头又怎知我不在。<br>可我看来:鹿见人而惊消失于林深，鲸踏浪而上搁浅于浅滩,亦如我见你如碌如惊。<br>终究:鹿惧人前，潮退鲸落，雾气藏你心。<br>不见你，不见我。
-        </div>
-    </div>
-</div>
-                    
 
-                    
-
-                    
-                        <link rel="stylesheet" href="/libs/dplayer/DPlayer.min.css">
-<div class="video-player">
-    
-    <div class="title center-align">
-        <i class="fas fa-video-camera"></i>&nbsp;&nbsp;精彩视频
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s12">
-            <div id="dplayer" class="dplayer-video"
-                     style="height: 400# 如：400px;"></div>
+<div id="tags" class="container chip-container">
+    <div class="card">
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
+            </div>
+            <div class="tag-chips">
+                
+                
+                <a href="/tags/Picture/" title="Picture: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Picture" style="background-color: #F9EBEA;">Picture
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+            </div>
         </div>
     </div>
 </div>
 
-<script src="/libs/dplayer/DPlayer.min.js"></script>
-<script>
-    $(function () {
-        new DPlayer({
-            container: document.getElementById('dplayer'),
-            autoplay: 'false' === 'true',
-            theme: '#42b983',
-            loop: 'false' === 'true',
-            lang: 'zh-CN' === 'zh-CN' ? 'zh-cn' : 'en',
-            preload: 'auto',
-            volume: Number('0.7'),
-            video: {
-                url: '/medias/1.mp4# 必填',
-                pic: '',
-                thumbnails: ''
-            }
-        });
+    
+    <link rel="stylesheet" type="text/css" href="/libs/jqcloud/jqcloud.css">
+<style type="text/css">
+    #tag-wordcloud {
+        width: 100%;
+        height: 300px;
+    }
+</style>
+
+<div class="container" data-aos="fade-up">
+    <div class="card">
+        <div id="tag-wordcloud" class="card-content"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/libs/jqcloud/jqcloud-1.0.4.min.js"></script>
+<script type="text/javascript">
+    
+
+    $('#tag-wordcloud').jQCloud([{"text":"Picture","weight":1,"link":"1559629619.github.io/tags/Picture/"}], {
+        autoResize: true
     });
 </script>
-                    
-
-                    
-                    <div id="recommend-sections" class="recommend">
-                        
-
-
-
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
     
-
-    
-
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/02/24/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="第一篇博客">
-                            
-                            <span class="card-title">第一篇博客</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Dafeie
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Picture/">
-                            <span class="chip bg-color">Picture</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/02/13/hello-world/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                            
-                            <span class="card-title">Hello World</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Dafeie
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            
-        </div>
-    </article>
 
 </main>
-
-
 
     <p id="hitokoto">正在加载一言...</p>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">

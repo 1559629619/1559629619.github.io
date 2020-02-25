@@ -31,6 +31,7 @@
 
 
 <body>
+
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -424,9 +425,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Picture/">
+                                <span class="chip bg-color">Picture</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -523,7 +528,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Picture/">
+                                    <span class="chip bg-color">Picture</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -722,6 +731,14 @@
                 </div>
 
                 
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Picture/">
+                        <span class="chip bg-color">Picture</span>
+                    </a>
+                    
+                </div>
+                
             </div>
         </div>
         
@@ -893,7 +910,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </main>
 
 
-
+    <p id="hitokoto">正在加载一言...</p>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 <footer class="page-footer bg-color">
@@ -1039,7 +1056,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 <div class="progress-bar"></div>
 
-
+    
     <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -1065,7 +1082,7 @@ $(function () {
     </a>
 </div>
 
-
+    
     <script src="/libs/materialize/materialize.min.js"></script>
     <script src="/libs/masonry/masonry.pkgd.min.js"></script>
     <script src="/libs/aos/aos.js"></script>
@@ -1121,6 +1138,25 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+<!-- 一言API -->
+<!-- 现代写法，推荐 -->
+<!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+    <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<!--End-->
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/wanko.model.json"},"display":{"position":"right","width":250,"height":400},"mobile":{"show":true},"log":false});</script></body>
 
