@@ -118,7 +118,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -181,16 +181,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-08-24 17:45:24" itemprop="dateCreated datePublished" datetime="2021-08-24T17:45:24+08:00">2021-08-24</time>
+      <time title="Created: 2021-08-24 17:45:24 / Modified: 19:11:43" itemprop="dateCreated datePublished" datetime="2021-08-24T17:45:24+08:00">2021-08-24</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-11 11:08:04" itemprop="dateModified" datetime="2021-08-11T11:08:04+08:00">2021-08-11</time>
-      </span>
 
   
 </div>
@@ -202,175 +196,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="springmvc"><a href="#springmvc" class="headerlink" title="springmvc"></a>springmvc</h1><p><img src="C:\Users\Administrator\Desktop\笔记\springmvc.png" alt="springmvc"></p>
+          <h1 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h1><h1 id="springmvc"><a href="#springmvc" class="headerlink" title="springmvc"></a>springmvc</h1><p><img src="C:\Users\Administrator\Desktop\笔记\springmvc.png" alt="springmvc"></p>
 <ul>
-<li>DispatcherServlet(重中之重)</li>
-<li>HandlerMapping</li>
-<li>HandlerAdapter(主要干活的就是他，其他的主要是指挥调配，调用controller)</li>
-<li>ViewResolver</li>
-</ul>
-<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
-<li><p>前端发送请求给DispatcherServlet</p>
-</li>
-<li><p>DispatcherServlet向HandlerMapping询问谁能处理这些请求</p>
-</li>
-<li><p>HandleMapping查询到相关组件后返回一个HandlerExecutionChain给DispatcherServlet（因为可能需要多个组件才能完成相应的工作）</p>
-</li>
-<li><p>DispatcherServlet根据返回的组件获取HandlerAdapter，调用它去执行Controller</p>
-</li>
-<li><p>执行完毕后适配器返回结果ModelAndView给DispatchServlet</p>
-</li>
-<li><p>DispatcherServlet拿着ModelAndView交给ViewResolver进行视图解析</p>
-</li>
-<li><p>ViewResolver解析完将结果View返回给DispatcherServlet</p>
-</li>
-<li><p>DispatcherServlet对View进行渲染</p>
-</li>
-<li><p>最后DispatcherServlet把结果返回给用户（响应）</p>
-<h3 id="如果方法加上了-ResponseBody注解-则返回Json对象-此时由HandlerAdapter直接返回-不需要经由ViewResolver"><a href="#如果方法加上了-ResponseBody注解-则返回Json对象-此时由HandlerAdapter直接返回-不需要经由ViewResolver" class="headerlink" title=" *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver"></a><font color='#66BAB7' size='5'> *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver</font></h3></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/24/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Da Feie">
-      <meta itemprop="description" content="123456789">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/24/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-24 17:45:24 / Modified: 09:45:55" itemprop="dateCreated datePublished" datetime="2021-08-24T17:45:24+08:00">2021-08-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/24/%E7%AC%AC%E4%B8%80%E7%AF%87blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Da Feie">
-      <meta itemprop="description" content="123456789">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/24/%E7%AC%AC%E4%B8%80%E7%AF%87blog/" class="post-title-link" itemprop="url">springmvc</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-24 10:19:09 / Modified: 10:27:38" itemprop="dateCreated datePublished" datetime="2021-08-24T10:19:09+08:00">2021-08-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="springmvc"><a href="#springmvc" class="headerlink" title="springmvc"></a>springmvc</h1><ul>
 <li>DispatcherServlet(重中之重)</li>
 <li>HandlerMapping</li>
 <li>HandlerAdapter(主要干活的就是他，其他的主要是指挥调配，调用controller)</li>
