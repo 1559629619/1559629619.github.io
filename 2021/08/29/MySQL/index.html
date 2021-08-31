@@ -20,25 +20,33 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="是大肥鹅啊">
-<meta property="og:type" content="website">
-<meta property="og:title" content="是大肥鹅啊">
-<meta property="og:url" content="http://example.com/index.html">
+<meta name="description" content="Mysql聚合函数 COUNT(*)计算表中总的行数，不管某列是否有数值或者为空值。 COUNT(字段名)计算指定列下总的行数，计算时将忽略空值的行。  AVG()函数通过计算返回的行数和每一行数据的和，求得指定列数据的平均值。AVG()函数() AVG()函数可以与GROUP BY一起使用，来计算每个分组的平均值。  SUM()是一个求总和的函数，返回指定列值的总和。 SUM()可以与GROUP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql">
+<meta property="og:url" content="http://example.com/2021/08/29/MySQL/index.html">
 <meta property="og:site_name" content="是大肥鹅啊">
-<meta property="og:description" content="是大肥鹅啊">
+<meta property="og:description" content="Mysql聚合函数 COUNT(*)计算表中总的行数，不管某列是否有数值或者为空值。 COUNT(字段名)计算指定列下总的行数，计算时将忽略空值的行。  AVG()函数通过计算返回的行数和每一行数据的和，求得指定列数据的平均值。AVG()函数() AVG()函数可以与GROUP BY一起使用，来计算每个分组的平均值。  SUM()是一个求总和的函数，返回指定列值的总和。 SUM()可以与GROUP">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/08/29/MySQL/1.png">
+<meta property="og:image" content="http://example.com/2021/08/29/MySQL/2.png">
+<meta property="og:image" content="http://example.com/2021/08/29/MySQL/3.png">
+<meta property="og:image" content="http://example.com/2021/08/29/MySQL/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20210831103421175.png">
+<meta property="og:image" content="http://example.com/2021/08/29/MySQL/5.png">
+<meta property="article:published_time" content="2021-08-29T07:25:24.000Z">
+<meta property="article:modified_time" content="2021-08-31T11:21:28.384Z">
 <meta property="article:author" content="Da Feie">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/08/29/MySQL/1.png">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2021/08/29/MySQL/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/08/29/MySQL/","path":"2021/08/29/MySQL/","title":"Mysql"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>是大肥鹅啊</title>
+<title>Mysql | 是大肥鹅啊</title>
   
 
 
@@ -92,7 +100,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -105,6 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql"><span class="nav-number">1.</span> <span class="nav-text">Mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0"><span class="nav-number">1.0.1.</span> <span class="nav-text">聚合函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.2.</span> <span class="nav-text">表的连接方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">1.0.3.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1"><span class="nav-number">1.0.4.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%81"><span class="nav-number">1.0.5.</span> <span class="nav-text">锁</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -148,16 +157,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/29/MySQL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -170,9 +180,9 @@
       <meta itemprop="name" content="是大肥鹅啊">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/29/MySQL/" class="post-title-link" itemprop="url">Mysql</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Mysql
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -202,7 +212,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><ul>
+        <h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><ul>
 <li><p>COUNT(*)计算表中总的行数，不管某列是否有数值或者为空值。</p>
 <p>COUNT(字段名)计算指定列下总的行数，计算时将忽略空值的行。</p>
 </li>
@@ -401,7 +411,6 @@
 </li>
 </ul>
 
-      
     </div>
 
     
@@ -409,199 +418,22 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/25/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F-%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF-%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9/" rel="prev" title="缓存穿透 缓存击穿 缓存雪崩">
+                  <i class="fa fa-chevron-left"></i> 缓存穿透 缓存击穿 缓存雪崩
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/25/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F-%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF-%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Da Feie">
-      <meta itemprop="description" content="是大肥鹅啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是大肥鹅啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/25/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F-%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF-%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9/" class="post-title-link" itemprop="url">缓存穿透 缓存击穿 缓存雪崩</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-25 09:36:10 / Modified: 09:40:03" itemprop="dateCreated datePublished" datetime="2021-08-25T09:36:10+08:00">2021-08-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="缓存穿透-缓存击穿-缓存雪崩"><a href="#缓存穿透-缓存击穿-缓存雪崩" class="headerlink" title="缓存穿透 缓存击穿 缓存雪崩"></a>缓存穿透 缓存击穿 缓存雪崩</h1><ul>
-<li><h3 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h3><ul>
-<li><p>缓存穿透是指客户端请求根本不存在的key，Redis中查询不到，使得请求直达数据库，导致数据库负载过大甚至宕机。一般是由于业务层误删数据或者是有人恶意攻击。</p>
-</li>
-<li><p>解决方案：</p>
-<ol>
-<li>缓存空值，当Redis未命中时缓存该key的空值，当下次访问的时候缓存直接返回空值。此方法会导致冗余，可能会降低性能。</li>
-<li>布隆过滤器，把数据存入布隆过滤器，在访问缓存之前过滤器会进行拦截，根据算法判断请求的数据是否存在，如果不存在则直接返回空值。</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><h3 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h3><ul>
-<li>缓存击穿是指热点数据过期了，此时又有大量的并发请求进来，大量的请求直达数据库，导致压力增大甚至服务崩溃。</li>
-<li>解决方案：<ol>
-<li>永不过期，不给热点数据设置过期时间，即永不过期；也可以设置逻辑上的过期时间（不在redis里设置过期时间，自己单独计时），当逻辑上过期时使用单独的线程从数据库更新缓存。</li>
-<li>加互斥锁，锁住缓存，只有一个线程能访问数据，即使数据过期，数据库压力也不会太大，该线程回填缓存后后续线程则可以直接从缓存中读取。</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><h3 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h3><ul>
-<li>缓存雪崩指的是在某一时刻缓存宕机，导致大量请求直达数据库造成数据库宕机，也有可能是该时刻大量的缓存数据到期，大致大量请求直达数据库。</li>
-<li>解决方案：<ol>
-<li>避免同时过期：在设置TTL的时候附加一个随机数，使得过期时间分散开。</li>
-<li>熔断措施：在雪崩发生后如果访问的不是核心业务数据，则直接返回错误信息（ERROR503等），或者干脆不发送给redis直接返回给用户。</li>
-<li>建立更可靠的缓存服务：采用哨兵或者集群模式，部署多个Redis实例，个别节点宕机，仍然可以保证整体服务的可用性。</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/24/springmvc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Da Feie">
-      <meta itemprop="description" content="是大肥鹅啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是大肥鹅啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/24/springmvc/" class="post-title-link" itemprop="url">SpringMVC</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-08-24 19:16:44 / Modified: 21:53:51" itemprop="dateCreated datePublished" datetime="2021-08-24T19:16:44+08:00">2021-08-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h1><img src="/2021/08/24/springmvc/springmvc.png" class title="This is an example image">
-
-<ul>
-<li>DispatcherServlet(重中之重)</li>
-<li>HandlerMapping</li>
-<li>HandlerAdapter(主要干活的就是他，其他的主要是指挥调配，调用controller)</li>
-<li>ViewResolver</li>
-</ul>
-<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
-<li><p>前端发送请求给DispatcherServlet</p>
-</li>
-<li><p>DispatcherServlet向HandlerMapping询问谁能处理这些请求</p>
-</li>
-<li><p>HandleMapping查询到相关组件后返回一个HandlerExecutionChain给DispatcherServlet（因为可能需要多个组件才能完成相应的工作）</p>
-</li>
-<li><p>DispatcherServlet根据返回的组件获取HandlerAdapter，调用它去执行Controller</p>
-</li>
-<li><p>执行完毕后适配器返回结果ModelAndView给DispatchServlet</p>
-</li>
-<li><p>DispatcherServlet拿着ModelAndView交给ViewResolver进行视图解析</p>
-</li>
-<li><p>ViewResolver解析完将结果View返回给DispatcherServlet</p>
-</li>
-<li><p>DispatcherServlet对View进行渲染</p>
-</li>
-<li><p>最后DispatcherServlet把结果返回给用户（响应）</p>
-<h3 id="如果方法加上了-ResponseBody注解-则返回Json对象-此时由HandlerAdapter直接返回-不需要经由ViewResolver"><a href="#如果方法加上了-ResponseBody注解-则返回Json对象-此时由HandlerAdapter直接返回-不需要经由ViewResolver" class="headerlink" title=" *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver"></a><font color="#66BAB7" size="5"> *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver</font></h3></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
