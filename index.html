@@ -193,7 +193,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-17 11:28:22" itemprop="dateModified" datetime="2021-09-17T11:28:22+08:00">2021-09-17</time>
+        <time title="Modified: 2021-09-17 11:31:12" itemprop="dateModified" datetime="2021-09-17T11:31:12+08:00">2021-09-17</time>
       </span>
 
   
@@ -208,7 +208,7 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>​    HashMap底层基于散列算法实现。HashMap 允许 null 键和 null 值，在计算哈键的哈希值时，null 键哈希值为 0。HashMap 并不保证键值对的顺序，这意味着在进行某些操作后，键值对的顺序可能会发生变化。HashMap 是非线程安全类，在多线程环境下可能会存在问题。</p>
 <h2 id="2-原理"><a href="#2-原理" class="headerlink" title="2.原理"></a>2.原理</h2><p>​    HashMap采用了拉链式的散列算法，数据结构采用数组+链表（JDK8之后为数组+链表+红黑树）。进行增删查操作时，先定位到元素的所在桶的位置，之后再从链表中定位该元素。</p>
-<p><img src="/2021/09/10/HashMap/HashMap%5C15161231547335.jpg"></p>
+<p><img src="/2021/09/10/HashMap/15161231547335.jpg"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/09/10/HashMap/#more" rel="contents">

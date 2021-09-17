@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="是大肥鹅啊">
 <meta property="og:description" content="HashMap1.概述​    HashMap底层基于散列算法实现。HashMap 允许 null 键和 null 值，在计算哈键的哈希值时，null 键哈希值为 0。HashMap 并不保证键值对的顺序，这意味着在进行某些操作后，键值对的顺序可能会发生变化。HashMap 是非线程安全类，在多线程环境下可能会存在问题。 2.原理​    HashMap采用了拉链式的散列算法，数据结构采用数组+链">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/09/10/HashMap/HashMap%5C15161231547335.jpg">
-<meta property="og:image" content="http://example.com/HashMap/2.png">
+<meta property="og:image" content="http://example.com/2021/09/10/HashMap/15161231547335.jpg">
+<meta property="og:image" content="http://example.com/2021/09/10/HashMap/2.png">
 <meta property="article:published_time" content="2021-09-10T08:30:25.000Z">
-<meta property="article:modified_time" content="2021-09-17T03:28:22.394Z">
+<meta property="article:modified_time" content="2021-09-17T03:31:12.892Z">
 <meta property="article:author" content="Da Feie">
 <meta property="article:tag" content="JAVA集合">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/09/10/HashMap/HashMap%5C15161231547335.jpg">
+<meta name="twitter:image" content="http://example.com/2021/09/10/HashMap/15161231547335.jpg">
 
 
 <link rel="canonical" href="http://example.com/2021/09/10/HashMap/">
@@ -201,7 +201,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-17 11:28:22" itemprop="dateModified" datetime="2021-09-17T11:28:22+08:00">2021-09-17</time>
+        <time title="Modified: 2021-09-17 11:31:12" itemprop="dateModified" datetime="2021-09-17T11:31:12+08:00">2021-09-17</time>
       </span>
 
   
@@ -216,7 +216,7 @@
     <div class="post-body" itemprop="articleBody">
         <h1 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>​    HashMap底层基于散列算法实现。HashMap 允许 null 键和 null 值，在计算哈键的哈希值时，null 键哈希值为 0。HashMap 并不保证键值对的顺序，这意味着在进行某些操作后，键值对的顺序可能会发生变化。HashMap 是非线程安全类，在多线程环境下可能会存在问题。</p>
 <h2 id="2-原理"><a href="#2-原理" class="headerlink" title="2.原理"></a>2.原理</h2><p>​    HashMap采用了拉链式的散列算法，数据结构采用数组+链表（JDK8之后为数组+链表+红黑树）。进行增删查操作时，先定位到元素的所在桶的位置，之后再从链表中定位该元素。</p>
-<p><img src="/2021/09/10/HashMap/HashMap%5C15161231547335.jpg"></p>
+<p><img src="/2021/09/10/HashMap/15161231547335.jpg"></p>
 <span id="more"></span>
 
 <h2 id="3-分析"><a href="#3-分析" class="headerlink" title="3. 分析"></a>3. 分析</h2><p>​    3.1 初始容量、负载因子、阈值</p>
@@ -246,7 +246,7 @@
 
 <p>​        JDK8的扩容效率要高于先前版本的HashMap，JDK7在扩容时要考虑是否加入种子，并且重新计算键值对的hash值，而JDK8中直接用红黑树解决了该问题。</p>
 <p>​        扩容时根据hash值的二进制新增的那一位是否为1判断新的桶位置在哪。例如：我们将16扩容至32</p>
-<p><img src="/HashMap/2.png"></p>
+<p><img src="/2021/09/10/HashMap/2.png"></p>
 <p>hash1新增的位是0  hash2新增的那一位是1</p>
 <p>所以在计算新桶位置时  hash1的位置为原位置  hash2的位置为原位置+oldCap</p>
 </li>
