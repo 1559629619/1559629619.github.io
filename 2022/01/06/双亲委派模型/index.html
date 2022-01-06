@@ -20,29 +20,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="SpringMVC   DispatcherServlet(重中之重) HandlerMapping HandlerAdapter(主要干活的就是他，其他的主要是指挥调配，调用controller) ViewResolver  流程 前端发送请求给DispatcherServlet  DispatcherServlet向HandlerMapping询问谁能处理这些请求  HandleMapping">
+<meta name="description" content="双亲委派模型自JDK1.2以来，Java一直保持着三层类加载器、双亲委派的类加载架构。对于这个时期的Java应用，绝大多数Java程序都会使用到以下3个系统提供的类加载器来进行加载。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringMVC">
-<meta property="og:url" content="http://example.com/2021/08/24/springmvc/index.html">
+<meta property="og:title" content="双亲委派模型">
+<meta property="og:url" content="http://example.com/2022/01/06/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="是大肥鹅啊">
-<meta property="og:description" content="SpringMVC   DispatcherServlet(重中之重) HandlerMapping HandlerAdapter(主要干活的就是他，其他的主要是指挥调配，调用controller) ViewResolver  流程 前端发送请求给DispatcherServlet  DispatcherServlet向HandlerMapping询问谁能处理这些请求  HandleMapping">
+<meta property="og:description" content="双亲委派模型自JDK1.2以来，Java一直保持着三层类加载器、双亲委派的类加载架构。对于这个时期的Java应用，绝大多数Java程序都会使用到以下3个系统提供的类加载器来进行加载。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/08/24/springmvc/springmvc.png">
-<meta property="article:published_time" content="2021-08-24T11:16:44.000Z">
-<meta property="article:modified_time" content="2021-08-24T13:53:51.178Z">
+<meta property="og:image" content="http://example.com/2022/01/06/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/1.png">
+<meta property="article:published_time" content="2022-01-06T07:29:54.000Z">
+<meta property="article:modified_time" content="2022-01-06T07:45:39.270Z">
 <meta property="article:author" content="Da Feie">
+<meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/08/24/springmvc/springmvc.png">
+<meta name="twitter:image" content="http://example.com/2022/01/06/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/1.png">
 
 
-<link rel="canonical" href="http://example.com/2021/08/24/springmvc/">
+<link rel="canonical" href="http://example.com/2022/01/06/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/08/24/springmvc/","path":"2021/08/24/springmvc/","title":"SpringMVC"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/01/06/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/","path":"2022/01/06/双亲委派模型/","title":"双亲委派模型"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>SpringMVC | 是大肥鹅啊</title>
+<title>双亲委派模型 | 是大肥鹅啊</title>
   
 
 
@@ -109,7 +110,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringMVC"><span class="nav-number">1.</span> <span class="nav-text">SpringMVC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%96%B9%E6%B3%95%E5%8A%A0%E4%B8%8A%E4%BA%86-ResponseBody%E6%B3%A8%E8%A7%A3-%E5%88%99%E8%BF%94%E5%9B%9EJson%E5%AF%B9%E8%B1%A1-%E6%AD%A4%E6%97%B6%E7%94%B1HandlerAdapter%E7%9B%B4%E6%8E%A5%E8%BF%94%E5%9B%9E-%E4%B8%8D%E9%9C%80%E8%A6%81%E7%BB%8F%E7%94%B1ViewResolver"><span class="nav-number">1.1.1.</span> <span class="nav-text"> *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">双亲委派模型</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,7 +169,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/24/springmvc/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/06/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -181,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          SpringMVC
+          双亲委派模型
         </h1>
 
         <div class="post-meta-container">
@@ -193,7 +194,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-08-24 19:16:44 / Modified: 21:53:51" itemprop="dateCreated datePublished" datetime="2021-08-24T19:16:44+08:00">2021-08-24</time>
+      <time title="Created: 2022-01-06 15:29:54 / Modified: 15:45:39" itemprop="dateCreated datePublished" datetime="2022-01-06T15:29:54+08:00">2022-01-06</time>
     </span>
 
   
@@ -206,34 +207,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h1><img src="/2021/08/24/springmvc/springmvc.png" class title="This is an example image">
+        <h1 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h1><p>自JDK1.2以来，Java一直保持着三层类加载器、双亲委派的类加载架构。对于这个时期的Java应用，绝大多数Java程序都会使用到以下3个系统提供的类加载器来进行加载。</p>
+<span id="more"></span>
 
 <ul>
-<li>DispatcherServlet(重中之重)</li>
-<li>HandlerMapping</li>
-<li>HandlerAdapter(主要干活的就是他，其他的主要是指挥调配，调用controller)</li>
-<li>ViewResolver</li>
+<li>启动类加载器（Bootstrap Class Loader）：这个类加载器负责加载存放在\lib目录，或者被-Xbootclasspath参数所指定的路径中存放的，而且是Java虚拟机能够识别的（按照文件名识别，如rt.jar、tools.jar，名字不符合的类库即使放在lib目录中也不会被加载）类库加载到虚拟机的内存中。启动类加载器无法被Java程序直接引用，用户在编写自定义类加载器时，如果需要把加载请求委派给引导类加载器去处理，那直接使用null代替即可。</li>
+<li>扩展类加载器（Extension Class Loader）：这个类加载器是在类sun.misc.Launcher$ExtClassLoader中以Java代码的形式实现的。它负责加载\lib\ext目录中，或者被java.ext.dirs系统变量所指定的路径中所有的类库。根据“扩展类加载器”这个名称，就可以推断出这是一种Java系统类库的扩展机制，JDK的开发团队允许用户将具有通用性的类库放置在ext目录里以扩展Java SE的功能，在JDK 9之后，这种扩展机制被模块化带来的天然的扩展能力所取代。由于扩展类加载器是由Java代码实现的，开发者可以直接在程序中使用扩展类加载器来加载Class文件。</li>
+<li>应用程序类加载器（Application Class Loader）：这个类加载器由sun.misc.Launcher$AppClassLoader来实现。由于应用程序类加载器是ClassLoader类中的getSystem-ClassLoader()方法的返回值，所以有些场合中也称它为“系统类加载器”。它负责加载用户类路径（ClassPath）上所有的类库，开发者同样可以直接在代码中使用这个类加载器。如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</li>
 </ul>
-<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
-<li><p>前端发送请求给DispatcherServlet</p>
-</li>
-<li><p>DispatcherServlet向HandlerMapping询问谁能处理这些请求</p>
-</li>
-<li><p>HandleMapping查询到相关组件后返回一个HandlerExecutionChain给DispatcherServlet（因为可能需要多个组件才能完成相应的工作）</p>
-</li>
-<li><p>DispatcherServlet根据返回的组件获取HandlerAdapter，调用它去执行Controller</p>
-</li>
-<li><p>执行完毕后适配器返回结果ModelAndView给DispatchServlet</p>
-</li>
-<li><p>DispatcherServlet拿着ModelAndView交给ViewResolver进行视图解析</p>
-</li>
-<li><p>ViewResolver解析完将结果View返回给DispatcherServlet</p>
-</li>
-<li><p>DispatcherServlet对View进行渲染</p>
-</li>
-<li><p>最后DispatcherServlet把结果返回给用户（响应）</p>
-<h3 id="如果方法加上了-ResponseBody注解-则返回Json对象-此时由HandlerAdapter直接返回-不需要经由ViewResolver"><a href="#如果方法加上了-ResponseBody注解-则返回Json对象-此时由HandlerAdapter直接返回-不需要经由ViewResolver" class="headerlink" title=" *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver"></a><font color="#66BAB7" size="5"> *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver</font></h3></li>
-</ol>
+<p>双亲委派模型要求除了顶层的启动类加载器外，其余的类加载器都应有自己的父类加载器。这里类加载器之间的父子关系一般不是以继承的关系来实现的，而是通常使用组合关系来复用父加载器的代码。</p>
+<p><img src="/2022/01/06/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/1.png"></p>
+<p>双亲委派模型的工作过程是，如果一个类加载器收到了加载类的请求，他先不会自己去加载该类，而是先委托给自己的父类加载器加载，当父类加载器无法加载这个类时，自己才回去加载这个类。这就导致了所有的类加载请求都会传递到最上层的类加载器，比如ArrayList类，无论是哪个类加载器要加载他，都会最终交给启动类加载器，最后一定是最上层的能够加载这个类的加载器加载了这个类，这就保证了在不同类加载器加载的情况下的ArrayList类都是同一个类。</p>
 
     </div>
 
@@ -242,15 +226,21 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JVM/" rel="tag"># JVM</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2022/01/06/%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%9A%84%E8%BF%87%E7%A8%8B/" rel="prev" title="实例化的过程">
+                  <i class="fa fa-chevron-left"></i> 实例化的过程
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/08/25/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F-%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF-%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9/" rel="next" title="缓存穿透 缓存击穿 缓存雪崩">
-                  缓存穿透 缓存击穿 缓存雪崩 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/01/06/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" rel="next" title="垃圾回收">
+                  垃圾回收 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
