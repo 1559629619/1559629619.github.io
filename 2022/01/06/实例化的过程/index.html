@@ -20,29 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="SpringMVC   DispatcherServlet(重中之重) HandlerMapping HandlerAdapter(主要干活的就是他，其他的主要是指挥调配，调用controller) ViewResolver  流程 前端发送请求给DispatcherServlet  DispatcherServlet向HandlerMapping询问谁能处理这些请求  HandleMapping">
+<meta name="description" content="实例化的过程 类加载检查 想要new一个对象出来，首先要保证我们已经有了这个对象的类，所以要先检查类是否已经加载到方法区中，如果没有则需要先进行类加载。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringMVC">
-<meta property="og:url" content="http://example.com/2021/08/24/springmvc/index.html">
+<meta property="og:title" content="实例化的过程">
+<meta property="og:url" content="http://example.com/2022/01/06/%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%9A%84%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="是大肥鹅啊">
-<meta property="og:description" content="SpringMVC   DispatcherServlet(重中之重) HandlerMapping HandlerAdapter(主要干活的就是他，其他的主要是指挥调配，调用controller) ViewResolver  流程 前端发送请求给DispatcherServlet  DispatcherServlet向HandlerMapping询问谁能处理这些请求  HandleMapping">
+<meta property="og:description" content="实例化的过程 类加载检查 想要new一个对象出来，首先要保证我们已经有了这个对象的类，所以要先检查类是否已经加载到方法区中，如果没有则需要先进行类加载。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/08/24/springmvc/springmvc.png">
-<meta property="article:published_time" content="2021-08-24T11:16:44.000Z">
-<meta property="article:modified_time" content="2021-08-24T13:53:51.178Z">
+<meta property="article:published_time" content="2022-01-06T02:28:43.000Z">
+<meta property="article:modified_time" content="2022-01-06T03:36:09.694Z">
 <meta property="article:author" content="Da Feie">
+<meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/08/24/springmvc/springmvc.png">
 
 
-<link rel="canonical" href="http://example.com/2021/08/24/springmvc/">
+<link rel="canonical" href="http://example.com/2022/01/06/%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%9A%84%E8%BF%87%E7%A8%8B/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/08/24/springmvc/","path":"2021/08/24/springmvc/","title":"SpringMVC"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/01/06/%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%9A%84%E8%BF%87%E7%A8%8B/","path":"2022/01/06/实例化的过程/","title":"实例化的过程"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>SpringMVC | 是大肥鹅啊</title>
+<title>实例化的过程 | 是大肥鹅啊</title>
   
 
 
@@ -109,7 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringMVC"><span class="nav-number">1.</span> <span class="nav-text">SpringMVC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%96%B9%E6%B3%95%E5%8A%A0%E4%B8%8A%E4%BA%86-ResponseBody%E6%B3%A8%E8%A7%A3-%E5%88%99%E8%BF%94%E5%9B%9EJson%E5%AF%B9%E8%B1%A1-%E6%AD%A4%E6%97%B6%E7%94%B1HandlerAdapter%E7%9B%B4%E6%8E%A5%E8%BF%94%E5%9B%9E-%E4%B8%8D%E9%9C%80%E8%A6%81%E7%BB%8F%E7%94%B1ViewResolver"><span class="nav-number">1.1.1.</span> <span class="nav-text"> *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">实例化的过程</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,7 +167,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/24/springmvc/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/06/%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%9A%84%E8%BF%87%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -181,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          SpringMVC
+          实例化的过程
         </h1>
 
         <div class="post-meta-container">
@@ -193,7 +192,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-08-24 19:16:44 / Modified: 21:53:51" itemprop="dateCreated datePublished" datetime="2021-08-24T19:16:44+08:00">2021-08-24</time>
+      <time title="Created: 2022-01-06 10:28:43 / Modified: 11:36:09" itemprop="dateCreated datePublished" datetime="2022-01-06T10:28:43+08:00">2022-01-06</time>
     </span>
 
   
@@ -206,33 +205,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h1><img src="/2021/08/24/springmvc/springmvc.png" class title="This is an example image">
-
+        <h1 id="实例化的过程"><a href="#实例化的过程" class="headerlink" title="实例化的过程"></a>实例化的过程</h1><ol>
+<li><p>类加载检查</p>
+<p>想要new一个对象出来，首先要保证我们已经有了这个对象的类，所以要先检查类是否已经加载到方法区中，如果没有则需要先进行类加载。</p>
+<span id="more"></span></li>
+<li><p>分配内存</p>
+<p>​    类加载检查通过后就要为对象分配一块内存用于存储对象，对象需要的内存大小在类加载完毕后就可以确定，内存分配有两种方法，分别为<font color="orange">指针碰撞、空闲列表</font>两种，而具体采用哪种则由内存是否规整决定，因为指针碰撞相当于在空闲和已占用的内存中间放一个指针当分配内存时只需要将指针移动分配的内存大小的距离即相当于分配了内存；而采用空闲表法的由于内存不连续，无法简单地通过移动指针来分配内存，采用的是将内存中空闲的内存用一个表记录起来，分配内存的时候就把一块足够大的内存块分配给对象，并更新空闲列表。像ParNew和Serial这种采用标记-复制法的GC收集器的采用指针碰撞法，而CMS这种采用标记-清除GC收集器的由于产生了不规整的内存则使用了空闲列表法。</p>
+<p>ps：实际上内存分配是发生频率很高的事件，当加入多线程后，分配内存就要考虑很多线程安全的问题了。一般有两种方式来保证线程安全。</p>
 <ul>
-<li>DispatcherServlet(重中之重)</li>
-<li>HandlerMapping</li>
-<li>HandlerAdapter(主要干活的就是他，其他的主要是指挥调配，调用controller)</li>
-<li>ViewResolver</li>
+<li>CAS+失败重试，CAS是一种典型的乐观锁，他不会对数据上锁，在修改之前比较一下，如果发现那个数值被修改了，则返回那个数值现在的值，不要修改他，并重试；如果那个数值没有被修改则直接修改。CAS操作高效地保证了操作的原子性。</li>
+<li>TLAB，为每个线程在Eden分配一小块缓存，分配内存时先在缓存中分配，缓存不够了再采用上面的方法进行分配。</li>
 </ul>
-<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
-<li><p>前端发送请求给DispatcherServlet</p>
 </li>
-<li><p>DispatcherServlet向HandlerMapping询问谁能处理这些请求</p>
+<li><p>初始化零值</p>
+<p>分配完内存后为对象的内存空间全部初始化为零值（不包括对象头），这保证了对象的实例的字段可以不赋值直接使用。</p>
 </li>
-<li><p>HandleMapping查询到相关组件后返回一个HandlerExecutionChain给DispatcherServlet（因为可能需要多个组件才能完成相应的工作）</p>
+<li><p>设置对象头</p>
+<p>虚拟机对对象进行必要的设置，包括了它是哪个类的实例、对象的哈希码、GC年龄分代等。对象头中还包含了锁的信息，如是否是偏向锁、轻量级锁、重量级锁。</p>
 </li>
-<li><p>DispatcherServlet根据返回的组件获取HandlerAdapter，调用它去执行Controller</p>
+<li><p>执行init方法</p>
+<p>执行到这里，虚拟机的工作基本就完成了，但是从java代码的角度来看，才刚刚开始，需要执行构造方法来按照我们的意愿来初始化一下，即执行init方法。</p>
+<p>ps：要区别于类加载过程中初始化阶段的clinit，clinit是专门用于初始化类变量（静态变量）的。</p>
 </li>
-<li><p>执行完毕后适配器返回结果ModelAndView给DispatchServlet</p>
-</li>
-<li><p>DispatcherServlet拿着ModelAndView交给ViewResolver进行视图解析</p>
-</li>
-<li><p>ViewResolver解析完将结果View返回给DispatcherServlet</p>
-</li>
-<li><p>DispatcherServlet对View进行渲染</p>
-</li>
-<li><p>最后DispatcherServlet把结果返回给用户（响应）</p>
-<h3 id="如果方法加上了-ResponseBody注解-则返回Json对象-此时由HandlerAdapter直接返回-不需要经由ViewResolver"><a href="#如果方法加上了-ResponseBody注解-则返回Json对象-此时由HandlerAdapter直接返回-不需要经由ViewResolver" class="headerlink" title=" *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver"></a><font color="#66BAB7" size="5"> *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver</font></h3></li>
 </ol>
 
     </div>
@@ -242,16 +236,19 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JVM/" rel="tag"># JVM</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2022/01/06/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E7%9A%84%E8%BF%87%E7%A8%8B/" rel="prev" title="类加载的过程">
+                  <i class="fa fa-chevron-left"></i> 类加载的过程
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/08/25/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F-%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF-%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9/" rel="next" title="缓存穿透 缓存击穿 缓存雪崩">
-                  缓存穿透 缓存击穿 缓存雪崩 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

@@ -23,7 +23,7 @@
 <meta name="description" content="是大肥鹅啊">
 <meta property="og:type" content="website">
 <meta property="og:title" content="是大肥鹅啊">
-<meta property="og:url" content="http://example.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="是大肥鹅啊">
 <meta property="og:description" content="是大肥鹅啊">
 <meta property="og:locale" content="en_US">
@@ -31,14 +31,14 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+<link rel="canonical" href="http://example.com/page/2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"tags/设计模式/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"page/2/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Tag: 设计模式 | 是大肥鹅啊</title>
+<title>是大肥鹅啊</title>
   
 
 
@@ -152,50 +152,103 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner index posts-expand">
+
+    
 
 
+<div class="post-block">
   
   
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">设计模式
-          <small>Tag</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/24/springmvc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Da Feie">
+      <meta itemprop="description" content="是大肥鹅啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是大肥鹅啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/24/springmvc/" class="post-title-link" itemprop="url">SpringMVC</a>
         </h2>
-      </div>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-08-24 19:16:44 / Modified: 21:53:51" itemprop="dateCreated datePublished" datetime="2021-08-24T19:16:44+08:00">2021-08-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h1><img src="/2021/08/24/springmvc/springmvc.png" class title="This is an example image">
+
+<ul>
+<li>DispatcherServlet(重中之重)</li>
+<li>HandlerMapping</li>
+<li>HandlerAdapter(主要干活的就是他，其他的主要是指挥调配，调用controller)</li>
+<li>ViewResolver</li>
+</ul>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
+<li><p>前端发送请求给DispatcherServlet</p>
+</li>
+<li><p>DispatcherServlet向HandlerMapping询问谁能处理这些请求</p>
+</li>
+<li><p>HandleMapping查询到相关组件后返回一个HandlerExecutionChain给DispatcherServlet（因为可能需要多个组件才能完成相应的工作）</p>
+</li>
+<li><p>DispatcherServlet根据返回的组件获取HandlerAdapter，调用它去执行Controller</p>
+</li>
+<li><p>执行完毕后适配器返回结果ModelAndView给DispatchServlet</p>
+</li>
+<li><p>DispatcherServlet拿着ModelAndView交给ViewResolver进行视图解析</p>
+</li>
+<li><p>ViewResolver解析完将结果View返回给DispatcherServlet</p>
+</li>
+<li><p>DispatcherServlet对View进行渲染</p>
+</li>
+<li><p>最后DispatcherServlet把结果返回给用户（响应）</p>
+<h3 id="如果方法加上了-ResponseBody注解-则返回Json对象-此时由HandlerAdapter直接返回-不需要经由ViewResolver"><a href="#如果方法加上了-ResponseBody注解-则返回Json对象-此时由HandlerAdapter直接返回-不需要经由ViewResolver" class="headerlink" title=" *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver"></a><font color="#66BAB7" size="5"> *如果方法加上了@ResponseBody注解  则返回Json对象  此时由HandlerAdapter直接返回 不需要经由ViewResolver</font></h3></li>
+</ol>
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-19T10:32:49+08:00"
-              content="2021-09-19">
-          09-19
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/19/2021-9-19-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url">
-            <span itemprop="name">设计模式</span>
-          </a>
-      </div>
-
+    <footer class="post-footer">
+        <div class="post-eof"></div>
       
-    </header>
+    </footer>
   </article>
+</div>
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </div>
   </main>
