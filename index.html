@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -163,6 +163,78 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/07/JMM%E4%B8%8EHappens-Before/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Da Feie">
+      <meta itemprop="description" content="是大肥鹅啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是大肥鹅啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/07/JMM%E4%B8%8EHappens-Before/" class="post-title-link" itemprop="url">JMM与Happens Before</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-07 17:54:50 / Modified: 19:59:00" itemprop="dateCreated datePublished" datetime="2022-01-07T17:54:50+08:00">2022-01-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JMM与Happens-Before"><a href="#JMM与Happens-Before" class="headerlink" title="JMM与Happens Before"></a>JMM与Happens Before</h1><p>JMM是Java Memory Model的缩写，Java线程之间的通信由JMM控制，即JMM决定一个线程对共享变量的写入何时对另一个线程可见。JMM定义了线程和主内存之间的抽象关系，通过控制主内存与每个本地内存（抽象概念）之间的交互，JMM为Java程序员提供了内存可见性的保证。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/07/JMM%E4%B8%8EHappens-Before/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -816,86 +888,6 @@
 <li>合成复用原则</li>
 </ol>
 <h3 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h3>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/10/HashMap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Da Feie">
-      <meta itemprop="description" content="是大肥鹅啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是大肥鹅啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/10/HashMap/" class="post-title-link" itemprop="url">HashMap</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-10 16:30:25" itemprop="dateCreated datePublished" datetime="2021-09-10T16:30:25+08:00">2021-09-10</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-09-17 11:31:12" itemprop="dateModified" datetime="2021-09-17T11:31:12+08:00">2021-09-17</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>​    HashMap底层基于散列算法实现。HashMap 允许 null 键和 null 值，在计算哈键的哈希值时，null 键哈希值为 0。HashMap 并不保证键值对的顺序，这意味着在进行某些操作后，键值对的顺序可能会发生变化。HashMap 是非线程安全类，在多线程环境下可能会存在问题。</p>
-<h2 id="2-原理"><a href="#2-原理" class="headerlink" title="2.原理"></a>2.原理</h2><p>​    HashMap采用了拉链式的散列算法，数据结构采用数组+链表（JDK8之后为数组+链表+红黑树）。进行增删查操作时，先定位到元素的所在桶的位置，之后再从链表中定位该元素。</p>
-<p><img src="/2021/09/10/HashMap/15161231547335.jpg"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/10/HashMap/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
