@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="垃圾回收器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="垃圾回收器">
+<meta property="og:url" content="http://example.com/2022/01/18/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/index.html">
+<meta property="og:site_name" content="是大肥鹅啊">
+<meta property="og:description" content="垃圾回收器">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220119163918340.png">
+<meta property="og:image" content="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220119193834387.png">
+<meta property="og:image" content="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220119193859523.png">
+<meta property="og:image" content="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220119194102503.png">
+<meta property="og:image" content="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220104110209740.png">
+<meta property="og:image" content="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220120173752586.png">
+<meta property="og:image" content="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220120182705865.png">
+<meta property="article:published_time" content="2022-01-18T12:19:36.000Z">
+<meta property="article:modified_time" content="2022-01-20T14:08:46.196Z">
+<meta property="article:author" content="Da Feie">
+<meta property="article:tag" content="JVM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220119163918340.png">
+
+
+<link rel="canonical" href="http://example.com/2022/01/18/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/01/18/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/","path":"2022/01/18/垃圾回收器/","title":"垃圾回收器"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>垃圾回收器 | 是大肥鹅啊</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">是大肥鹅啊</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">Tags</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">垃圾回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E7%82%B9%E5%92%8C%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">优点和问题</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Da Feie</p>
+  <div class="site-description" itemprop="description">是大肥鹅啊</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/18/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Da Feie">
+      <meta itemprop="description" content="是大肥鹅啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是大肥鹅啊">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          垃圾回收器
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-01-18 20:19:36" itemprop="dateCreated datePublished" datetime="2022-01-18T20:19:36+08:00">2022-01-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-20 22:08:46" itemprop="dateModified" datetime="2022-01-20T22:08:46+08:00">2022-01-20</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h1><p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220119163918340.png" alt="image-20220119163918340"></p>
+<span id="more"></span>
+
+<ol>
+<li><p>serial/serial old：HotSpot虚拟机下客户端模式的默认收集器，新生代采取标记-复制算法、老年代采取标记-整理算法都需要暂停所有用户线程。对于核心较少的处理器来说没有线程交互，单线程收集效率最高，简单高效是他的优点。</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220119193834387.png" alt="image-20220119193834387"></p>
+</li>
+<li><p>parnew/serial old:知识在serial的基础上新生代的垃圾回收变为多线程并发模式，同样会stop the world。主要用于服务端。目前只有parnew能和CMS搭配使用。</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220119193859523.png" alt="image-20220119193859523"></p>
+</li>
+<li><p>Parallel Scavenge/Parallel Old：</p>
+<p>同样是基于标记-复制算法实现的，也是能够并行收集的多线程收集器。它的关注点与其他收集器不同，CMS等收集器的关注点是尽可能地缩短垃圾 收集时用户线程的停顿时间，而Parallel Scavenge收集器的目标则是达到一个可控制的吞吐量主要适合在后台运算 而不需要太多交互的分析任务。Parallel Scavenge收集器还有一个参数，当这个参数被激活之后，就不需要人工指定新生代的大小、 Eden与Survivor区的比例、晋升老年代对象大小等细节参数了，虚拟机会根据当前系统的运行情况收集性 能监控信息，动态调整这些参数以提供最合适的停顿时间或者最大的吞吐量。这种调节方式称为垃圾收集 的自适应的调节策略，这种策略也是Parallel Scavenge收集器区别于ParNew收集器的一个重要特性。在注重吞吐量或者 处理器资源较为稀缺的场合，都可以优先考虑Parallel Scavenge加Parallel Old收集器这个组合。-XX：MaxGCPauseMillis参数会让收集器尽可能的保证垃圾收集时间不超过这个值（毫秒数），当然它只是尽可能的，不是设置多低就能达到的，并且随着延迟的降低吞吐量也在下降。-XX：GCTimeRatio参数是垃圾收集时间占总时间的比率，相当于吞吐量的倒数。</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220119194102503.png" alt="image-20220119194102503"></p>
+</li>
+<li><p>CMS：</p>
+<p>基于标记清除算法实现，初始标记、并发标记、重新标记、并发清除四个步骤。其中<strong>初始标记、重新标记</strong>这 两个步骤仍然需要“Stop The World”。</p>
+<p>初始标记：只是标记一下GC Roots能够到达的对象，需要暂停用户线程，但是速度很快。</p>
+<p>并发标记：从GC Roots开始向下遍历对象并标记，这个过程可以和用户线程一起进行，（注意这里是并发，要和并行区别开，并行是多个垃圾回收线程同时进行，并发是垃圾回收和用户线程同时进行）但是它终究还是占用了一部分线程，降低了吞吐量。</p>
+<p>重新标记：修正并发标记期间用户线程又改变的对象，如增量更新法，时间稍长。</p>
+<p>并发清理：并发的清理掉</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220104110209740.png" alt="image-20220104110209740"></p>
+<p>CMS的缺点：</p>
+<ol>
+<li>并发阶段虽然不用stop the world 但是仍然占用了一部分的线程，降低了吞吐量。</li>
+<li>他无法处理浮动垃圾，可能导致并发失败而导致另一次的Full GC。<ol>
+<li>浮动垃圾：在并发标记和并发清除阶段还是会有新的垃圾产生，这些垃圾在这一次GC中无法处理。</li>
+<li>并发失败：由于GC时用户线程还在继续运行，所以要预留一部分空间时就开始GC，如果在CMS运行期间无法满足程序创建新对象的需要的话，就会出现并发失败，此时程序只能stop the world 并进行一次serial old的GC。</li>
+</ol>
+</li>
+<li>标记清除算法决定了它会产生内存碎片。</li>
+</ol>
+</li>
+<li><p>G1：</p>
+<p>​    Garbage First（简称G1）收集器是垃圾收集器技术发展历史上的里程碑式的成果，它开创了收集器面向局部收集的设计思路和基于Region的内存布局形式 。G1是一款面向服务器的垃圾收集器，它可以面向堆内的任何部分来组成回收集进行回收，衡量标准不再是它属于哪个分代，<strong>而是哪块内存中存放的垃圾数量最多，回收收益最高</strong>，这就是G1收集器的Mixed GC模式。</p>
+<pre><code> G1收集器将堆内存分为一个个大小相等的独立区域Region，每个都可以根据需要担任Eden、Survivor、老年代，其中有一类特殊的Humongous区域，专门用来存储大对象，一般认为超过了一个Region容量一半的即可定义为大对象，对于超过了 一个Region的超大对象则放到N个连续的Humongous Region中，G1一般把Humongous看做老年代的一部分。
+</code></pre>
+<p>​    虽然G1仍然保留了新生代和老年代的概念，但他们都不再是固定得了，他们是一系列区域（不需要连续）的动态集合，G1之所以能建立可预测的停顿时间模型，是因为他把Region作为单次回收的最小单位，<strong>每次收集的都是Region大小的整数倍</strong>，他在后台维护一个优先级列表，根据用户设置的停顿时间，<strong>优先收集那些收集价值最高的Region</strong>。</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220120173752586.png" alt="image-20220120173752586"></p>
+<p>G1的回收包含以下四个步骤：</p>
+<ul>
+<li><p>初始标记：仅仅只是标记一下GC Roots能直接关联到的对象，并修改TAMS指针的值（后面会说到），这些耗时很短，几乎没有停顿。</p>
+</li>
+<li><p>并发标记：可以和用户线程并发执行，标记可以到达的对象，找出要被回收的对象（<strong>三色标记法</strong>）。</p>
+</li>
+<li><p>最终标记：重新标记并发阶段被用户更改的少量对象，记录在SATB中的（快照，并发标记时如果有切除由灰色节点指向白色节点的引用关系时记录这个灰色节点（相当于快照），并以这个灰色节点为根节点重新扫描）。</p>
+</li>
+<li><p>筛选回收：根据各个Region的回收价值和用户的期望把这些Region构成回收集，将存活对象放入空的Region中，再清理掉旧Region中的全部对象，由于涉及到对象的移动，所以需要暂停用户线程。</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220120182705865.png" alt="image-20220120182705865"><br>可以看到除了并发标记之外，其他的三个步骤都是需要暂停用户线程的，所以G1并非纯粹的追求低延迟，他是在延迟可控的前提下，尽可能的提高吞吐量。但是这个参数也有可能会导致一些以外的情况，比如我们设置停顿时间期望为20ms，这样可能会导致每次垃圾回收的回收集只占堆内存的很少一部分，随着时间的推移或者业务量的激增，垃圾回收渐渐无法应付对象分配的速度了，导致堆内存越来越多，但是GC又无法起到实质性的作用，导致最后堆内存被填满，引发FullGC，更加影响性能。</p>
+</li>
+</ul>
+<h2 id="优点和问题"><a href="#优点和问题" class="headerlink" title="优点和问题"></a>优点和问题</h2><p>相比于CMS，G1有很多优点：</p>
+<ol>
+<li><p>CMS的标记-清除算法本身会导致空间碎片化的问题，而G1从宏观上来看采用的是标记-整理算法，从微观上（两个Region之间）来看又是采用了标记-复制算法，无论哪一种都不会产生内存碎片。</p>
+</li>
+<li><p>用户可以指定期望的停顿时间，根据业务的不同，选择合适的方案。</p>
+</li>
+<li><p>按性价比对垃圾进行回收，对于某些有着错综复杂的跨Region引用的对象，如果他们占用的内存又不是很大，我们就可以先不回收，这种垃圾回收起来“费力不讨好”。</p>
+<p>……</p>
+</li>
+</ol>
+<p>但是它也有一部分棘手的问题，这也导致了它并不是压倒性的超越了CMS。</p>
+<p>首先就是分代回收中的跨代引用问题仍然存在，甚至变得更加棘手，在G1中体现为对象间的跨Region引用，由于Region众多，就容易出现错综复杂的跨Region引用。在G1中仍然使用了卡表和记忆集来解决这类问题，但是他记录的是双向指针，并且每个Region中都要有这样的卡表，导致了大量的堆内存占用。</p>
+<p>另外，在并发标记的时候要保证和用户线程能够和平共处，用户线程的操作不能导致三色标记法的标记出现问题，CMS采用了增量更新（在每次增加由黑节点到白节点的引用时，将黑节点记下，在重新标记阶段在以这些黑节点为根节点进行遍历），而G1采用了原始快照（并发标记时如果有切除由灰色节点指向白色节点的引用关系时记录这个灰色节点（相当于快照），并以这个灰色节点为根节点重新扫描）。</p>
+<p>此外内存分配上G1也有一些特别的设计，G1为每个Region设计了两个指针名为TAMS（Top At Mark Start）用来划分出一块区域专门用于垃圾清理时的内存分配，所有的对象都要分配在这两个指针之间。</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JVM/" rel="tag"># JVM</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/15/StringBuilder%E5%92%8CStringBuffer/" rel="prev" title="StringBuilder和StringBuffer">
+                  <i class="fa fa-chevron-left"></i> StringBuilder和StringBuffer
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/01/21/%E5%AE%88%E6%8A%A4%E7%BA%BF%E7%A8%8BDaemon/" rel="next" title="守护线程Daemon">
+                  守护线程Daemon <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Da Feie</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

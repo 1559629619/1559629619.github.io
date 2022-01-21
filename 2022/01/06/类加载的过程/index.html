@@ -29,7 +29,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/01/06/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E7%9A%84%E8%BF%87%E7%A8%8B/class1.png">
 <meta property="article:published_time" content="2022-01-06T01:35:01.000Z">
-<meta property="article:modified_time" content="2022-01-06T07:31:51.829Z">
+<meta property="article:modified_time" content="2022-01-20T01:38:19.859Z">
 <meta property="article:author" content="Da Feie">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
@@ -133,13 +133,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -202,10 +202,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-01-06 09:35:01 / Modified: 15:31:51" itemprop="dateCreated datePublished" datetime="2022-01-06T09:35:01+08:00">2022-01-06</time>
+      <time title="Created: 2022-01-06 09:35:01" itemprop="dateCreated datePublished" datetime="2022-01-06T09:35:01+08:00">2022-01-06</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-20 09:38:19" itemprop="dateModified" datetime="2022-01-20T09:38:19+08:00">2022-01-20</time>
+      </span>
 
   
 </div>
@@ -222,8 +228,8 @@
 <span id="more"></span>
 
 <h3 id="1-加载"><a href="#1-加载" class="headerlink" title="1. 加载"></a>1. 加载</h3><p>​    加载的目的就是把二进制的字节流类型文件按JVM的规范加载到虚拟机中，它分为3步。</p>
-<pre><code>1. 通过一个类的全限定名称来获取该类的二进制字节流
- 2. 将这个二进制字节流的数据结构转换为方法区的数据结构
+<p>​    1. 通过一个类的全限定名称来获取该类的二进制字节流</p>
+<pre><code> 2. 将这个二进制字节流的数据结构转换为方法区的数据结构
  3. 在堆内存中生成一个java.lang.Class对象用于访问方法区中的数据
 </code></pre>
 <h3 id="2-验证"><a href="#2-验证" class="headerlink" title="2. 验证"></a>2. 验证</h3><p>​    验证的目的是确保Class文件中的信息符合Java虚拟机规范中的要求，并且不会威胁到虚拟机自身的安全，通常分为下面四个阶段。</p>
