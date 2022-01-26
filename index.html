@@ -127,13 +127,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -163,6 +163,467 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/26/%E7%BA%BF%E7%A8%8B%E3%80%81%E6%90%BA%E7%A8%8B%E3%80%81%E7%AE%A1%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Da Feie">
+      <meta itemprop="description" content="是大肥鹅啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是大肥鹅啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/26/%E7%BA%BF%E7%A8%8B%E3%80%81%E6%90%BA%E7%A8%8B%E3%80%81%E7%AE%A1%E7%A8%8B/" class="post-title-link" itemprop="url">线程、携程、管程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-26 21:39:35 / Modified: 22:16:10" itemprop="dateCreated datePublished" datetime="2022-01-26T21:39:35+08:00">2022-01-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="线程、携程、管程"><a href="#线程、携程、管程" class="headerlink" title="线程、携程、管程"></a>线程、携程、管程</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程是一个动态的概念，它是程序的一次执行过程，在操作系统上进程的本质是一组有序指令加数据以及资源的集合，包括进程主体和程序控制块（PCB）。<strong>进程是分配资源的独立单位。</strong></p>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>线程是一种轻量级的进程，他一定是在进程内部的，所有线程共享进程的内存，线程并不独立的分配资源，但是他们有自己的计数器、栈和寄存器。<strong>线程是调度的最小单位。</strong>一个进程可以包含多个线程，而一个线程只能属于一个进程。</p>
+<h2 id="线程和进程的区别"><a href="#线程和进程的区别" class="headerlink" title="线程和进程的区别"></a>线程和进程的区别</h2><ol>
+<li>进程是系统资源分配的最小单位，线程是CPU调度的最小单位</li>
+<li>一个进程可以包含多条线程，而一个线程只能属于一个进程</li>
+<li>创建进程消耗的资源要比创建线程消耗的资源大得多</li>
+<li>进程的切换效率要比线程的切换效率低得多</li>
+<li>系统中每一个进程都是相互独立的存在，而同一个进程中所有的线程只有自己的栈区，其他空间都是共享的</li>
+<li>进程之间的通讯必须借助于外部手段，而线程之间的通讯是直接通过共享空间来通讯的</li>
+<li>进程之间不存在安全问题，而同一个进程中的线程存在安全问题。</li>
+</ol>
+<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><p>协程的粒度更加小，它是线程中的一个个任务。他的调度由用户控制，也拥有自己的栈和寄存器，协程执行效率极高，携程直接操作栈基本没有内核切换的开销，上下文切换非常快。</p>
+<h2 id="协程和线程的区别"><a href="#协程和线程的区别" class="headerlink" title="协程和线程的区别"></a>协程和线程的区别</h2><ol>
+<li>线程是CPU调度的，协程是由用户调度的。</li>
+<li>线程存在安全问题，协程相对安全。</li>
+<li>线程使用同步机制，协程使用异步机制。</li>
+</ol>
+<h2 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h2><p>管程是一种程序结构，结构内的多个子程序（对象或模块）形成的多个工作线程互斥访问共享资源。这些共享资源一般是硬件设备或一群变量。管程实现了在一个时间点，最多只有一个线程在执行管程的某个子程序。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/26/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E2%80%94%E2%80%94%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Da Feie">
+      <meta itemprop="description" content="是大肥鹅啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是大肥鹅啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/26/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E2%80%94%E2%80%94%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" class="post-title-link" itemprop="url">数据库优化——分库分表</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-26 11:46:37 / Modified: 20:43:49" itemprop="dateCreated datePublished" datetime="2022-01-26T11:46:37+08:00">2022-01-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数据库优化——分库分表"><a href="#数据库优化——分库分表" class="headerlink" title="数据库优化——分库分表"></a>数据库优化——分库分表</h1><p>当我们的数据库的数据量不断增大，数据库就会出现瓶颈，即不管是优化索引还是添加主从，性能提升依旧不明显。这是就要考虑对数据进行切分了。</p>
+<p>根据切分类型分为垂直（纵向）切分和水平（横向）切分。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/26/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96%E2%80%94%E2%80%94%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/23/Fail-Fast%E5%BF%AB%E9%80%9F%E5%A4%B1%E8%B4%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Da Feie">
+      <meta itemprop="description" content="是大肥鹅啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是大肥鹅啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/23/Fail-Fast%E5%BF%AB%E9%80%9F%E5%A4%B1%E8%B4%A5/" class="post-title-link" itemprop="url">Fail-Fast快速失败</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-23 16:39:26 / Modified: 18:07:11" itemprop="dateCreated datePublished" datetime="2022-01-23T16:39:26+08:00">2022-01-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Fail-Fast快速失败"><a href="#Fail-Fast快速失败" class="headerlink" title="Fail-Fast快速失败"></a>Fail-Fast快速失败</h1><p>在看集合源码的时候注意到有modCount这样一个变量，在集合添加、删除元素等对集合进行结构上的改变的时候（修改元素内容不算），会对modCount进行++操作，他记录了集合结构的改变次数。</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220123163950635.png" alt="image-20220123163950635"></p>
+<p>在进行序列化或者迭代操作的时候，会对modCount进行验证，看看前后modCount的值是否有改变，有改变则抛出ConcurrentModificationException异常。</p>
+<p>下面通过一段程序来看一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; arr= <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        arr.add(<span class="number">1</span>);</span><br><span class="line">        arr.add(<span class="number">2</span>);</span><br><span class="line">        arr.add(<span class="number">3</span>);</span><br><span class="line">        arr.add(<span class="number">4</span>);</span><br><span class="line">        <span class="keyword">for</span>(Integer i:arr)&#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">            arr.remove(i);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>只看代码逻辑的话好像没什么问题，就是加了四个元素，又删掉了四个，但实际运行结果则是下图这样的：</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220123171030617.png" alt="image-20220123171030617"></p>
+<p>原因就是上面说到的快速失败，调用remove后modcount进行了++，而老的modCount（即expectedModCount）则是在new Itr（）（一个实现了迭代器接口的内部类）时被赋予了值。</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220123171405270.png" alt="image-20220123171405270"></p>
+<p>而在remove方法中对modCount进行了++操作之后，两个值自然是不相等了，所以抛出了异常。</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220123171613350.png" alt="image-20220123171613350"></p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>使用迭代器的remove方法就不会导致抛出异常了，就像这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; arr= <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        arr.add(<span class="number">1</span>);</span><br><span class="line">        arr.add(<span class="number">2</span>);</span><br><span class="line">        arr.add(<span class="number">3</span>);</span><br><span class="line">        arr.add(<span class="number">4</span>);</span><br><span class="line">        Iterator&lt;Integer&gt; it=arr.iterator();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">            System.out.println(it.next());</span><br><span class="line">            it.remove();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220123172137447.png" alt="image-20220123172137447"></p>
+<p>查看迭代器的remove方法，是这样的：</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220123173020608.png" alt="image-20220123173020608"></p>
+<p>他是调用了ArrayList的remove方法，所以modCount这时是不等于expectedModCount的，但是它后面又对expectedModeCount进行了一次赋值，这样就不会抛异常了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>modCount的目的是在高并发场景下如果有其他线程修改了集合的结构可以直接抛异常，但是它不一定会触发，所以并不能保证新城安全。我们可以使用copyOnWriteArrayList来解决这个问题。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/22/%E5%88%9D%E5%A7%8B%E5%8C%96%E5%A4%A7%E4%B9%B1%E6%96%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Da Feie">
+      <meta itemprop="description" content="是大肥鹅啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是大肥鹅啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/22/%E5%88%9D%E5%A7%8B%E5%8C%96%E5%A4%A7%E4%B9%B1%E6%96%97/" class="post-title-link" itemprop="url">初始化大乱斗</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-22 19:44:10 / Modified: 21:21:58" itemprop="dateCreated datePublished" datetime="2022-01-22T19:44:10+08:00">2022-01-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="初始化大乱斗"><a href="#初始化大乱斗" class="headerlink" title="初始化大乱斗"></a>初始化大乱斗</h1><p>直接贴代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InitialDemo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> k=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> InitialDemo t1=<span class="keyword">new</span> InitialDemo(<span class="string">&quot;t1&quot;</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> InitialDemo t2=<span class="keyword">new</span> InitialDemo(<span class="string">&quot;t2&quot;</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> i=print(<span class="string">&quot;i&quot;</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> n=<span class="number">99</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        print(<span class="string">&quot;初始化块&quot;</span>);</span><br><span class="line">        j=<span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">InitialDemo</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        System.out.println((k++)+<span class="string">&quot;:&quot;</span>+str+<span class="string">&quot;    i=&quot;</span>+i+<span class="string">&quot;    n=&quot;</span>+n);</span><br><span class="line">        ++i;</span><br><span class="line">        ++n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        print(<span class="string">&quot;静态块&quot;</span>);</span><br><span class="line">        n=<span class="number">100</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> j=print(<span class="string">&quot;j&quot;</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">print</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        System.out.println((k++)+<span class="string">&quot;:&quot;</span>+str+<span class="string">&quot;   i=&quot;</span>+i+<span class="string">&quot;     n=&quot;</span>+n);</span><br><span class="line">        ++n;</span><br><span class="line">        <span class="keyword">return</span> ++i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        InitialDemo test=<span class="keyword">new</span> InitialDemo(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>首先程序从main方法进入,遇到new InitialDemo后发现这个类还没有被加载，于是加载这个类，经历加载、验证、准备、解析、初始化，开始对静态变量和代码块初始化。</p>
+</li>
+<li><p>k=1、t1=new InitialDemo(“t1”)到这句开始执行对象的实例化，按顺序执行构造代码块，最后执行构造方法。</p>
+<p>1:初始化块   i=0     n=0<br>2:j   i=1     n=1<br>3:t1    i=2    n=2</p>
+</li>
+<li><p>InitialDemo t2=new InitialDemo(“t2”);这句的原理同上</p>
+</li>
+<li><p>然后打印print(“i”)的结果:</p>
+<p>7:i   i=6     n=6</p>
+</li>
+<li><p>对n赋值99</p>
+</li>
+<li><p>执行静态块</p>
+<p>8:静态块   i=7     n=99</p>
+</li>
+<li><p>执行初始化块</p>
+<p>9:初始化块   i=8     n=100</p>
+</li>
+<li><p>输出print(“j”)</p>
+<p>10:j   i=9     n=101</p>
+</li>
+<li><p>执行构造方法</p>
+<p>11:test    i=10    n=102</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/21/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Da Feie">
+      <meta itemprop="description" content="是大肥鹅啊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是大肥鹅啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/21/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="post-title-link" itemprop="url">线程池</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-01-21 19:24:56" itemprop="dateCreated datePublished" datetime="2022-01-21T19:24:56+08:00">2022-01-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-22 17:19:02" itemprop="dateModified" datetime="2022-01-22T17:19:02+08:00">2022-01-22</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><p>想要了解线程池绕不开Executors相关的几个接口，以下是相关的几个常用的接口和类的UML图。包括Executor、ExecutorService、Executors、ThreadPoolExecutor、ScheduledThreadPoolExecutor等。</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220121193211045.png" alt="image-20220121193211045"></p>
+<p>图中没有写到Executors这个类，因为他和这几个类和接口没有继承关系，是作为一个工厂或者工具类来使用的。</p>
+<h2 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h2><p>Executor是一个借口，定义了一个接受Runnable接口对象的方法execute，void execute(Runnable command);,他用来执行一个任务即实现了Runnable接口的一个类，一般来说Runnable创建新线程并启动是这样的：new Thread(new MyRunnable()).start(),在Executor中直接调用execute即可：executor.execute(new MyRunnable())</p>
+<h2 id="ExecutorService"><a href="#ExecutorService" class="headerlink" title="ExecutorService"></a>ExecutorService</h2><p>这是一个我们使用比较多的接口，他提供了生命周期管理的方法，我们可以调用shutDown和sutDownNow方法来关闭ExecutorService，前者是比较平滑的方式，调用后就不再接受新的任务了，已经提交的任务都执行完毕后则会关闭ExecutorService。</p>
+<h2 id="Executors"><a href="#Executors" class="headerlink" title="Executors"></a>Executors</h2><p>Executors工厂类包括了几个静态方法来创建线程池，所创建的线程池都是通过ThreadPoolExecutor来实现的。</p>
+<ul>
+<li><strong>newCachedThreadPool</strong>()：创建一个具有缓存功能的线程池，系统根据需要创建线程，这些线程将会被缓存在线程池中。</li>
+<li><strong>newFixedThreadPool</strong>(int nThreads)：创建一个可重用的、具有固定线程数的线程池。</li>
+<li><strong>newSingleThreadExecutor</strong>()：创建一个只有单线程的线程池，它相当于调用newFixedThread Pool()方法时传入参数为1。</li>
+<li><strong>newScheduledThreadPool</strong>(int corePoolSize)：创建具有指定线程数的线程池，它可以在指定延迟后执行线程任务。corePoolSize指池中所保存的线程数，即使线程是空闲的也被保存在线程池内。</li>
+<li>newSingleThreadScheduledExecutor()：创建只有一个线程的线程池，它可以在指定延迟后执行线程任务。</li>
+<li>ExecutorService newWorkStealingPool(int parallelism)：创建持有足够的线程的线程池来支持给定的并行级别，该方法还会使用多个队列来减少竞争。</li>
+<li>ExecutorService newWorkStealingPool()：该方法是前一个方法的简化版本。如果当前机器有4个CPU，则目标并行级别被设置为4，也就是相当于为前一个方法传入4作为参数。</li>
+</ul>
+<h2 id="线程池的工作流程"><a href="#线程池的工作流程" class="headerlink" title="线程池的工作流程"></a>线程池的工作流程</h2><ol>
+<li><p>判断核心线程池是否已满，不满则创建一个新的工作线程来执行任务。</p>
+</li>
+<li><p>判断任务队列是否已满，不满则将新任务添加到队列中。</p>
+</li>
+<li><p>判断整个线程池是否已满，没满则创建一个新的工作线程来执行任务。已满则启动<strong>拒绝策略</strong>。</p>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220122164620904.png" alt="image-20220122164620904"></p>
+</li>
+</ol>
+<p>ThreadPoolExecutor执行execute方法分为以下几种情况：</p>
+<ol>
+<li><p>如果当前运行的线程数小于corePoolSize（核心线程数），则创建新线程来执行任务。（<font color="red">执行这一步需要获取全局锁</font>）</p>
+</li>
+<li><p>如果运行的线程数大于等于corePoolSize，则将任务加入BlockQueue。</p>
+</li>
+<li><p>如果阻塞队列也满了，则创建新的线程来处理任务（<font color="red">执行这一步需要获取全局锁</font>)</p>
+</li>
+<li><p>如果创建新线程后将会超过线程池的最大线程数（maximumPoolSize）那么直接执行拒绝策略。</p>
+<p>*通常来说为了尽可能避免获取全局锁，在线程池完成预热后（执行线程数大于等于核心线程数），线程池一般都是直接执行步骤2。</p>
+</li>
+</ol>
+<h2 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h2><p>当线程池的任务缓存队列已满并且线程池中的线程数目达到maximumPoolSize，如果还有任务到来就会采取任务拒绝策略，通常有以下四种策略：</p>
+<ol>
+<li>AbortPolicy：丢弃任务并抛出RejectedExecutionException异常。</li>
+<li>DiscardPolicy：也是丢弃任务，但是不抛出异常。</li>
+<li>DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复该过程）。</li>
+<li>CallerRunsPolicy：由调用线程处理该任务。</li>
+</ol>
+<h2 id="线程池的状态"><a href="#线程池的状态" class="headerlink" title="线程池的状态"></a>线程池的状态</h2><p>线程池一共有五种状态, 分别是：</p>
+<ol>
+<li>RUNNING ：能接受新提交的任务，并且也能处理阻塞队列中的任务。</li>
+<li>SHUTDOWN：关闭状态，不再接受新提交的任务，但却可以继续处理阻塞队列中已保存的任务。在线程池处于 RUNNING 状态时，调用 shutdown()方法会使线程池进入到该状态。</li>
+<li>STOP：不能接受新任务，也不处理队列中的任务，会中断正在处理任务的线程。在线程池处于 RUNNING 或 SHUTDOWN 状态时，调用 shutdownNow() 方法会使线程池进入到该状态。</li>
+<li>TIDYING：如果所有的任务都已终止了，workerCount (有效线程数) 为0，线程池进入该状态后会调用 terminated() 方法进入TERMINATED 状态。</li>
+<li>TERMINATED：在terminated() 方法执行完后进入该状态，默认terminated()方法中什么也没有做。进入TERMINATED的条件如下：<ul>
+<li>线程池不是RUNNING状态；</li>
+<li>线程池状态不是TIDYING状态或TERMINATED状态；</li>
+<li>如果线程池状态是SHUTDOWN并且workerQueue为空；</li>
+<li>workerCount为0；</li>
+<li>设置TIDYING状态成功。</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://gitee.com/dafeiea/feieimg/raw/master/typora/image-20220122165246210.png" alt="image-20220122165246210"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -523,366 +984,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/01/14/Redis%E6%8C%81%E4%B9%85%E5%8C%96/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/08/Synchronized/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Da Feie">
-      <meta itemprop="description" content="是大肥鹅啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是大肥鹅啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/08/Synchronized/" class="post-title-link" itemprop="url">Synchronized</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-08 10:08:06 / Modified: 19:25:45" itemprop="dateCreated datePublished" datetime="2022-01-08T10:08:06+08:00">2022-01-08</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Synchronized"><a href="#Synchronized" class="headerlink" title="Synchronized"></a>Synchronized</h1><p>Synchronized是我们常用的一种锁，用来保证线程安全,下面来具体记录一下他的使用和相关内容。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/01/08/Synchronized/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/07/JMM%E4%B8%8EHappens-Before/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Da Feie">
-      <meta itemprop="description" content="是大肥鹅啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是大肥鹅啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/07/JMM%E4%B8%8EHappens-Before/" class="post-title-link" itemprop="url">JMM与Happens Before</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-07 17:54:50 / Modified: 19:59:00" itemprop="dateCreated datePublished" datetime="2022-01-07T17:54:50+08:00">2022-01-07</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="JMM与Happens-Before"><a href="#JMM与Happens-Before" class="headerlink" title="JMM与Happens Before"></a>JMM与Happens Before</h1><p>JMM是Java Memory Model的缩写，Java线程之间的通信由JMM控制，即JMM决定一个线程对共享变量的写入何时对另一个线程可见。JMM定义了线程和主内存之间的抽象关系，通过控制主内存与每个本地内存（抽象概念）之间的交互，JMM为Java程序员提供了内存可见性的保证。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/01/07/JMM%E4%B8%8EHappens-Before/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/07/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84GC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Da Feie">
-      <meta itemprop="description" content="是大肥鹅啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是大肥鹅啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/07/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84GC/" class="post-title-link" itemprop="url">一次完整的GC</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-07 09:30:40 / Modified: 11:44:55" itemprop="dateCreated datePublished" datetime="2022-01-07T09:30:40+08:00">2022-01-07</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="一次完整的GC"><a href="#一次完整的GC" class="headerlink" title="一次完整的GC"></a>一次完整的GC</h1><p>新对象一般分配到新生代，当对象充满Eden和其中一个Survivor时会发生Minor GC，在Minor GC发生之前，JVM会先检查一下新生代中的对象大小，是比老年代剩余空间大还是小，因为如果GC完Survivor不够放则要放到老年代里，有两种情况。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/01/07/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84GC/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/06/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Da Feie">
-      <meta itemprop="description" content="是大肥鹅啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是大肥鹅啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/06/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" class="post-title-link" itemprop="url">垃圾回收</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-06 15:57:19 / Modified: 19:30:55" itemprop="dateCreated datePublished" datetime="2022-01-06T15:57:19+08:00">2022-01-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h1><h2 id="1-哪些地方需要垃圾回收"><a href="#1-哪些地方需要垃圾回收" class="headerlink" title="1. 哪些地方需要垃圾回收"></a>1. 哪些地方需要垃圾回收</h2><p>​    垃圾回收其实就是回收不再被占用的内存，随着程序得运行，加载的类越来越多，对象创建的越来越多，JVM的内存如果一直不回收则会被全部占用，出现OOM所以需要垃圾回收，而堆是所有对象分配的地方，并且分配十分频繁；方法区是类加载的区域，也会出现内存占用越来越多的情况。垃圾回收主要就是围绕这两个区域进行的。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/01/06/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/06/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Da Feie">
-      <meta itemprop="description" content="是大肥鹅啊">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是大肥鹅啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/06/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">双亲委派模型</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-01-06 15:29:54 / Modified: 15:45:39" itemprop="dateCreated datePublished" datetime="2022-01-06T15:29:54+08:00">2022-01-06</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h1><p>自JDK1.2以来，Java一直保持着三层类加载器、双亲委派的类加载架构。对于这个时期的Java应用，绝大多数Java程序都会使用到以下3个系统提供的类加载器来进行加载。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/01/06/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
