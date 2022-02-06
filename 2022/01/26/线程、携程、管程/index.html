@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="线程、携程、管程进程进程是一个动态的概念，它是程序的一次执行过程，在操作系统上进程的本质是一组有序指令加数据以及资源的集合，包括进程主体和程序控制块（PCB）。进程是分配资源的独立单位。 线程线程是一种轻量级的进程，他一定是在进程内部的，所有线程共享进程的内存，线程并不独立的分配资源，但是他们有自己的计数器、栈和寄存器。线程是调度的最小单位。一个进程可以包含多个线程，而一个线程只能属于一个进程。">
+<meta name="description" content="线程、携程、管程进程进程是一个动态的概念，它是程序的一次执行过程，在操作系统上进程的本质是一组有序指令加数据以及资源的集合，包括进程主体和程序控制块（PCB）。进程是分配资源的独立单位。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线程、携程、管程">
 <meta property="og:url" content="http://example.com/2022/01/26/%E7%BA%BF%E7%A8%8B%E3%80%81%E6%90%BA%E7%A8%8B%E3%80%81%E7%AE%A1%E7%A8%8B/index.html">
 <meta property="og:site_name" content="是大肥鹅啊">
-<meta property="og:description" content="线程、携程、管程进程进程是一个动态的概念，它是程序的一次执行过程，在操作系统上进程的本质是一组有序指令加数据以及资源的集合，包括进程主体和程序控制块（PCB）。进程是分配资源的独立单位。 线程线程是一种轻量级的进程，他一定是在进程内部的，所有线程共享进程的内存，线程并不独立的分配资源，但是他们有自己的计数器、栈和寄存器。线程是调度的最小单位。一个进程可以包含多个线程，而一个线程只能属于一个进程。">
+<meta property="og:description" content="线程、携程、管程进程进程是一个动态的概念，它是程序的一次执行过程，在操作系统上进程的本质是一组有序指令加数据以及资源的集合，包括进程主体和程序控制块（PCB）。进程是分配资源的独立单位。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-26T13:39:35.000Z">
-<meta property="article:modified_time" content="2022-01-26T14:16:10.402Z">
+<meta property="article:modified_time" content="2022-01-27T02:04:29.823Z">
 <meta property="article:author" content="Da Feie">
 <meta property="article:tag" content="Java并发">
 <meta name="twitter:card" content="summary">
@@ -131,13 +131,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -200,10 +200,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-01-26 21:39:35 / Modified: 22:16:10" itemprop="dateCreated datePublished" datetime="2022-01-26T21:39:35+08:00">2022-01-26</time>
+      <time title="Created: 2022-01-26 21:39:35" itemprop="dateCreated datePublished" datetime="2022-01-26T21:39:35+08:00">2022-01-26</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-27 10:04:29" itemprop="dateModified" datetime="2022-01-27T10:04:29+08:00">2022-01-27</time>
+      </span>
 
   
 </div>
@@ -216,6 +222,8 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="线程、携程、管程"><a href="#线程、携程、管程" class="headerlink" title="线程、携程、管程"></a>线程、携程、管程</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程是一个动态的概念，它是程序的一次执行过程，在操作系统上进程的本质是一组有序指令加数据以及资源的集合，包括进程主体和程序控制块（PCB）。<strong>进程是分配资源的独立单位。</strong></p>
+<span id="more"></span>
+
 <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>线程是一种轻量级的进程，他一定是在进程内部的，所有线程共享进程的内存，线程并不独立的分配资源，但是他们有自己的计数器、栈和寄存器。<strong>线程是调度的最小单位。</strong>一个进程可以包含多个线程，而一个线程只能属于一个进程。</p>
 <h2 id="线程和进程的区别"><a href="#线程和进程的区别" class="headerlink" title="线程和进程的区别"></a>线程和进程的区别</h2><ol>
 <li>进程是系统资源分配的最小单位，线程是CPU调度的最小单位</li>
@@ -254,6 +262,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/01/27/i++%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%8C%96/" rel="next" title="i++的线程安全化">
+                  i++的线程安全化 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
